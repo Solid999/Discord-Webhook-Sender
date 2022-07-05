@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Webhook</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id="title">Discord Webhook</div>
+    <input id="link" type="text" placeholder="https://discord.com/api/webhooks/979884348088156170/2D40EhBD5kVZ1LD_SbzLInBtE7pwNBwEFWxM6cepyBNOYd6EIiyLi1Bi0t50xt-AY5lA">
+    <div id="yourlink">Webhook Link</div>
+    <input type="text" id="content" placeholder="Content">
+    <div id="yourmessage">Message</div>
+    <button id="btn">Send</button>
+    <div id="notify"></div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@800&display=swap');
+    input:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+textarea:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#btn:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+#btn:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+    #title{
+        font-family: 'Heebo', sans-serif;
+        font-size: 40px;
+        color: white;
+        text-align: center;
+    }
+    #link{
+        position: absolute;
+        height: 40px;
+        width: 300px;
+        border: 2px solid white;
+        font-family: 'Heebo', sans-serif;
+        font-size: 15px;
+        margin-left: 730px;
+        margin-top: 20ch;
+    }
+    #yourlink{
+        position: absolute;
+        font-family: 'Heebo', sans-serif;
+        font-size: 25px;
+        margin-left: 800px;
+        margin-top: 8ch;
+        color: rgb(0, 0, 187);
+        text-align: center;
+    }
+    #content{
+        position: absolute;
+        height: 40px;
+        width: 300px;
+        border: 2px solid white;
+        font-family: 'Heebo', sans-serif;
+        font-size: 15px;
+        margin-left: 730px;
+        margin-top: 40ch;
+    }
+    #btn{
+        position: absolute;
+        height: 40px;
+        width: 300px;
+        border: 2px solid green;
+        font-family: 'Heebo', sans-serif;
+        font-size: 15px;
+        margin-left: 730px;
+        margin-top: 60ch;
+        background-color: green;
+    }
+    #yourmessage{
+        position: absolute;
+        font-family: 'Heebo', sans-serif;
+        font-size: 25px;
+        margin-left: 825px;
+        margin-top: 19.5ch;
+        color: rgb(0, 0, 187);
+        text-align: center;
+    }
+    #notify{
+        position: absolute;
+        color: red;
+        font-family: 'Heebo', sans-serif;
+        font-size: 15px;
+        margin-top: 80ch;
+        margin-left: 770px;
+    }
+    body{
+        background-color: rgba(0, 0, 0, 0.856);
+    }
+</style>
+<script>
+    $(function(){
+    $('#btn').click(function(){
+        var link = $('#link').val();
+        var username = $('#username').val();
+        var content = $('#content').val();
+        var avatar = $('#avatar').val();
+        if (link==null || link=="",content==null || content=="")
+        {
+            notify("Please Fill Out All The Fields");
+            return false;
+        }
+        $.post(link, {"content": content, "username": username, "avatar_url": avatar,});
+
+    });
+});
+
+function notify(message){
+    document.getElementById("notify").innerHTML = message;
+    setTimeout(()=>{
+        $('#notify').hide();
+    },3000)
+}
+</script>
+</html>
